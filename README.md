@@ -5,9 +5,11 @@ Sui es una plataforma de blockchain y contratos inteligentes de capa 1 diseñada
 
 Move es un lenguaje de código abierto para escribir paquetes seguros para manipular objetos en blockchain. Permite bibliotecas, herramientas y comunidades de desarrolladores comunes en blockchains con modelos de datos y ejecución muy diferentes.
 
+## Proyecto base
+
 Puedes usar este repositorio como tu punto de partida para el desarrollo de tu proyecto backend.
 
-## Abriendo con Codespaces
+### Abriendo con Codespaces
 
 * Asegúrate de clonar este repositorio a tu cuenta usando el botón **`Fork`**.
     
@@ -18,6 +20,16 @@ Puedes usar este repositorio como tu punto de partida para el desarrollo de tu p
     ![codespaces](./imagenes/codespaces.png)
 
 * Por último, presiona **`Create codespace on master`**. Esto abrirá el proyecto en una interfaz gráfica de Visual Studio Code e instalará todas las herramientas necesarias para desarrollar con Move.
+
+### Contenido
+
+Este proyecto instala las siguientes herramientas:
+* [SuiUp](https://github.com/Mystenlabs/suiup/) (Administrador de versiones).
+* [Sui CLI](https://docs.sui.io/references/cli/client) (Instalada usando SuiUp).
+* Extensión de VS Code [Move](https://marketplace.visualstudio.com/items?itemName=mysten.move).
+* Extensión de VS Code [Move Formatter](https://marketplace.visualstudio.com/items?itemName=mysten.prettier-move).
+
+Todas las herramientas fueron desarrolladas por [MystenLabs](https://www.mystenlabs.com/).
 
 ## Ejecutando el proyecto
 
