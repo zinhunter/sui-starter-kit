@@ -1,29 +1,25 @@
-# Introducción
+![banner](./imagenes/banner.jpg)
+# Sui Starter Kit Backend
 
-## Módulos y Paquetes
+Sui es una plataforma de blockchain y contratos inteligentes de capa 1 diseñada para que la propiedad de activos digitales sea rápida, privada, segura y accesible.
 
-**Move** en Sui tiene dos tipos diferentes de programas: Módulos y Paquetes. 
+Move es un lenguaje de código abierto para escribir paquetes seguros para manipular objetos en blockchain. Permite bibliotecas, herramientas y comunidades de desarrolladores comunes en blockchains con modelos de datos y ejecución muy diferentes.
 
-Move es un lenguaje para escribir contratos inteligentes, programas que se almacenan y ejecutan en la blockchain. Un programa se organiza en un paquete. Un paquete se publica en la blockchain y se identifica mediante una dirección. Se puede interactuar con un paquete publicado enviando transacciones que llamen a sus funciones. También puede actuar como dependencia de otros paquetes.
+Puedes usar este repositorio como tu punto de partida para el desarrollo de tu proyecto backend.
 
-Un módulo es la unidad base de organización del código en Move. Los módulos se utilizan para agrupar y aislar código, y todos los miembros del módulo son privados para el módulo por defecto.
+## Abriendo con Codespaces
 
-En esta sección aprenderás cómo definir un módulo, declarar sus miembros y acceder a él desde otros módulos.
+* Asegúrate de clonar este repositorio a tu cuenta usando el botón **`Fork`**.
+    
+    ![fork](./imagenes/fork.png)
+    * Puedes renombrar el repositorio a lo que sea que se ajuste con tu proyecto.
+* Presiona el botón **`<> Code`** y luego haz click en la sección **`Codespaces`**
 
-Módulo:
-* Contiene funciones y tipos.
+    ![codespaces](./imagenes/codespaces.png)
 
-Paquete:
-* Conjunto de módulos.
+* Por último, presiona **`Create codespace on master`**. Esto abrirá el proyecto en una interfaz gráfica de Visual Studio Code e instalará todas las herramientas necesarias para desarrollar con Move.
 
-En los siguientes tutoriales trabajaremos la mayor parte del tiempo **sólo con módulos**.
-
-## Ejecutando el tutorial
-
-> :information_source: Recuerda que debes navegar en tu terminal a este directorio:
->```sh
->cd backend/00_intro
->```
+## Ejecutando el proyecto
 
 Ingresa a tu terminal y ejecuta el siguiente comando:
 
@@ -46,7 +42,7 @@ Test result: OK. Total tests: 1; passed: 1; failed: 0
 
 ¡Felicidades! :partying_face: Acabas de ejecutar de manera exitosa tu primer módulo Move. Ahora, analicemos que está pasando.
 
-En la carpeta `sources` podemos encontrar un archivo llamado `introduccion.move`. Este archivo, como lo indica la extensión, contiene el código de Move que estamos ejecutando. En este caso, es un **módulo** con una **función** y un **test**.
+En la carpeta `sources` podemos encontrar un archivo llamado `starter.move`. Este archivo, como lo indica la extensión, contiene el código de Move que estamos ejecutando. En este caso, es un **módulo** con una **función** y un **test**.
 
 ## Estructura de un módulo
 
@@ -63,7 +59,7 @@ module direccion::nombre_modulo {
     La dirección la encontramos en el archivo de configuraciones `Move.toml`, en el apartado de `addresses`. En nuestro caso:
     ```toml
     [addresses]
-    introduccion = "0x5A6F6E612054726573"
+    starter = "0x0"
     ```
 3. Nombre del módulo, en nuestro caso: `practica_sui`
 
@@ -74,14 +70,14 @@ module introduccion::practica_sui {
 }
 ```
 
-Después, vienen los `imports` o los módulos/librerías que estamos importando para que el nuestro funcione. En nuestro código, estamos importando dos funciones de la librería principal de **Sui**:
+Después, vienen los `imports` o los módulos/librerías que estamos importando para que el nuestro funcione. En nuestro código, estamos importando dos funciones de la librería principal de **Move**:
 
 ```rust
     use std::debug::print;
     use std::string::utf8;
 ```
 
-Se importa la función para imprimir en consola, así como una función para convertir cadenas de texto a un formato aceptado por la función anterior. Esto lo veremos más adelante en esta serie de tutoriales.
+Se importa la función para imprimir en consola, así como una función para convertir cadenas de texto a un formato aceptado por la función anterior.
 
 La siguiente sección de código incluye nuestra primera función:
 
@@ -145,7 +141,7 @@ Después, obtenemos el mensaje que ejecuta la función prueba, en nuestro caso, 
 
 Ahora, en la siguiente línea, podemos obtener información de exactamente que funciones se ejecutaron:
 ```sh
-[ PASS    ] introduccion::practica_sui::prueba
+[ PASS    ] starter::practica_sui::prueba
 ```
 La estructura es algo así:
 ```rust
@@ -158,66 +154,3 @@ Por último, obtenemos información sobre las pruebas unitarias, cómo cuantas s
 ```sh
 Test result: OK. Total tests: 1; passed: 1; failed: 0
 ```
-
-## Reto final
-
-Cómo reto final, modifica la función para que, en vez de mostrar `Hello, World!`, imprima el logo de **Sui** en arte ASCII:
-```ASCII
-====================================================================================================
-====================================================================================================
-====================================================================================================
-====================================================================================================
-====================================================================================================
-====================================================================================================
-====================================================================================================
-====================================================================================================
-====================================================================================================
-================================================:..:================================================
-===============================================......-==============================================
-=============================================-..    ..:=============================================
-============================================....    ....============================================
-==========================================-..............:==========================================
-=========================================.......:==:.......=========================================
-=======================================-.......-====-.......:=======================================
-======================================:.    .:========:.    ..-=====================================
-====================================-.......:==========-.......:====================================
-===================================.........=============:... ...===================================
-=================================-.........================..   ..:=================================
-================================....    ..:=================:.......================================
-==============================-.....    ..:==================-.......:==============================
-=============================:............:====================:.......=============================
-===========================-.......-.......=====================-.......-===========================
-==========================-.......==:......-======================:.... .-==========================
-=========================-......:====.......-======================-......-=========================
-=========================......:=====-.......:======================-......=========================
-========================:......=======-... ....:=====================:.....:========================
-========================......-=========.........:-===================......========================
-=======================-    ..===========-..........:-================:.    :=======================
-=======================:    .:=============-...........:==============-.    :=======================
-=======================:    .:================:.....    ..-===========-.    .=======================
-=======================:    .:==================-:..    ...:==========:.    :=======================
-=======================-.  ...=====================-:...    .:========..    :=======================
-========================......-=======================:.    ...=======..    -=======================
-========================:.. ...=========================........=====.......========================
-=========================......:=========================:......:===:......-========================
-=========================-......:=========================.......-=:......:=========================
-==========================:.    ..-=======================-.    ....    .:==========================
-===========================:.......:=======================.    ........:===========================
-============================-...    ..=====================:        ...-============================
-==============================:.    ....:-================-.        ..==============================
-================================:...    .....::------::.....    ....================================
-==================================:.    ....................    .:-=================================
-====================================-:........................:-====================================
-========================================-:................:-========================================
-====================================================================================================
-====================================================================================================
-====================================================================================================
-====================================================================================================
-====================================================================================================
-====================================================================================================
-====================================================================================================
-====================================================================================================
-====================================================================================================
-```
-
-> :information_source: Recuerda guardar tus cambios en el archivo para posteriormente hacerles `push` a tu repositorio de **Github**.

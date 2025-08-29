@@ -4,6 +4,6 @@ version = "0.0.0"
 edition = "2024.beta"
 
 [addresses]
-direccion = "0x0"
+starter = "0x0"
 
 [dependencies]
