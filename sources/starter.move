@@ -1,7 +1,7 @@
 module starter::juan {
     use std::debug::print;
     use std::string::{String, utf8};
-
+    // Esto es un comentario
     public struct Usuario has drop {
         nombre: String,
         edad: u8,
