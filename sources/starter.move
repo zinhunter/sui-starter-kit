@@ -1,33 +1,37 @@
-module starter::juan {
-    use std::debug::print;
+module starter::biblioteca {
     use std::string::{String, utf8};
-    // Esto es un comentario
-    public struct Usuario has drop {
+    use sui::vec_map::{VecMap, Self};
+
+    #[error]
+    const ID_YA_EXISTE: vector<u8> = b"El ID que se intento insertar ya existe.";
+
+    public struct Biblioteca has key {
+        id: UID,
         nombre: String,
-        edad: u8,
-        vivo: bool,
+        libros: VecMap<u64, Libro>,
+    }
+    
+    public struct Libro has store {
+        titulo: String,
+        autor: String,
+        publicacion: u16,
+        disponible: bool,
     }
 
-    fun practica(usuario: Usuario) {
-        if(usuario.edad > 18) {
-            print(&utf8(b"Acceso permitido"));
-            print(&utf8(b"Acceso permitido"));
-            print(&utf8(b"Acceso permitido"));
-        } else if(usuario.edad == 18) {
-            print(&utf8(b"Felicidades!"));
-        } else {
-            print(&utf8(b"Acceso NO permitido"));
-        }
-    }
-
-    #[test]
-    fun prueba() {
-        let usuario = Usuario {
-            nombre: utf8(b"Juan Sanchez"),
-            edad: 18,
-            vivo: true,
+    public fun crear_biblioteca(ctx: &mut TxContext) {
+        let biblioteca = Biblioteca {
+            id: object::new(ctx),
+            nombre: utf8(b"Biblioteca Sui Latinoamericana"),
+            libros: vec_map::empty(),
         };
 
-        practica(usuario);
+        transfer::transfer(biblioteca, tx_context::sender(ctx));
+    }
+
+    public fun agregar_libro(biblioteca: &mut Biblioteca, id: u64, titulo: String, autor: String, publicacion: u16) {
+        assert!(!biblioteca.libros.contains(&id), ID_YA_EXISTE);
+
+        let libro = Libro { titulo, autor, publicacion, disponible: true };
+        biblioteca.libros.insert(id, libro);
     }
 }
